@@ -34,7 +34,8 @@ class SelectLevelViewController: UIViewController {
         btnL1.setBackgroundImage(BImage, for: UIControlState.normal)
         btnL2.setBackgroundImage(BImage, for: UIControlState.normal)
         btnL3.setBackgroundImage(BImage, for: UIControlState.normal)
-        
+        btnScoreBoard.setBackgroundImage(BImage, for: UIControlState.normal)
+        btnCustomizeDeck.setBackgroundImage(BImage, for: UIControlState.normal)
         welcomeLabel.text = userName
     }
 

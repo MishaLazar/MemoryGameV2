@@ -12,20 +12,36 @@ class CustomCardViewController: UIViewController,
     UIImagePickerControllerDelegate,
     UINavigationControllerDelegate
 {
+    var backgroundImg:UIImage = #imageLiteral(resourceName: "background")
+    var userName:String = ""
+    var BImage:UIImage = #imageLiteral(resourceName: "ArrowToLeft")
+    
     @IBOutlet weak var imagePicked: UIImageView!
     
     @IBOutlet weak var btnAddImageToDeck: UIButton!
-    @IBOutlet weak var btnRotateImg: UIButton!
+
     @IBOutlet weak var btnCamera: UIButton!
     @IBOutlet weak var btnGallery: UIButton!
     
+    var isGoingForward:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = backgroundImg
+        backgroundImage.contentMode =  UIViewContentMode.scaleAspectFill
+        self.view.insertSubview(backgroundImage, at: 0)        // Do any additional setup after loading the view.
+        
+        
+        btnAddImageToDeck.setBackgroundImage(BImage, for: UIControlState.normal)
+        btnCamera.setBackgroundImage(BImage, for: UIControlState.normal)
+        btnGallery.setBackgroundImage(BImage, for: UIControlState.normal)
     }
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        <#code#>
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

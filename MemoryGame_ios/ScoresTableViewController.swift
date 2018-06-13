@@ -10,25 +10,34 @@ import UIKit
 
 class ScoresTableViewController: UITableViewController {
     
-    // MARK: - Properties
+   
     
     var scores: [[String:String]] = [[:]]
+    var backgroundImg:UIImage = #imageLiteral(resourceName: "background")
+    var userName:String = ""
+    var BImage:UIImage = #imageLiteral(resourceName: "ArrowToLeft")
     
-    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        
+        
 //        tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = backgroundImg
+        backgroundImage.contentMode =  UIViewContentMode.scaleAspectFill
+        self.tableView.backgroundView = backgroundImage
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+      
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
@@ -42,12 +51,13 @@ class ScoresTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScoreTableViewCell", for: indexPath as IndexPath) as! ScoreTableViewCell
         
         // Configure the cell...
         let score = ScoreManager.manager.scores[indexPath.row]
         cell.confgureCell(score: score)
-        
+        cell.backgroundColor = .clear
         return cell
 
     }

@@ -10,6 +10,9 @@ import UIKit
 
 class DeckEditViewController: UIViewController,  UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
+    var backgroundImg:UIImage = #imageLiteral(resourceName: "background")
+    var userName:String = ""
+    var BImage:UIImage = #imageLiteral(resourceName: "ArrowToLeft")
     @IBOutlet weak var btnSaveDeck: UIButton!
     @IBOutlet weak var btnAddImage: UIButton!
     
@@ -21,8 +24,17 @@ class DeckEditViewController: UIViewController,  UICollectionViewDelegateFlowLay
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = backgroundImg
+        backgroundImage.contentMode =  UIViewContentMode.scaleAspectFill
+        self.view.insertSubview(backgroundImage, at: 0)
         imageData = DeckEdit.manager.getCutomDeckArr()
+        btnAddImage.setBackgroundImage(BImage, for: UIControlState.normal)
+        btnResetDeck.setBackgroundImage(BImage, for: UIControlState.normal)
+        btnSaveDeck.setBackgroundImage(BImage, for: UIControlState.normal)
+        
     }
     
     override func didReceiveMemoryWarning() {
