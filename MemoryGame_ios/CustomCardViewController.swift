@@ -38,10 +38,10 @@ class CustomCardViewController: UIViewController,
         btnAddImageToDeck.setBackgroundImage(BImage, for: UIControlState.normal)
         btnCamera.setBackgroundImage(BImage, for: UIControlState.normal)
         btnGallery.setBackgroundImage(BImage, for: UIControlState.normal)
+        self.navigationController?.isNavigationBarHidden = true;
+        self.navigationController?.isNavigationBarHidden = false;
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        <#code#>
-    }
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -82,14 +82,16 @@ class CustomCardViewController: UIViewController,
     
     @IBAction func AddImageToDeck(_ sender: Any) {
         
+        if imagePicked.image != nil {
+                  
        
-        var imageData = UIImageJPEGRepresentation(imagePicked.image!, 0.6)
-        var compressedJPGImage = UIImage(data: imageData!)
-        UIImageWriteToSavedPhotosAlbum(compressedJPGImage!, nil, nil, nil)
-        var card = CardModel(cardName: "PicName", img: compressedJPGImage!)
-        
-        DeckEdit.manager.addCustomeCardToDeck(card: card)
-        
+            var imageData = UIImageJPEGRepresentation(imagePicked.image!, 0.6)
+            var compressedJPGImage = UIImage(data: imageData!)
+            UIImageWriteToSavedPhotosAlbum(compressedJPGImage!, nil, nil, nil)
+            var card = CardModel(cardName: "PicName", img: compressedJPGImage!)
+            
+            DeckEdit.manager.addCustomeCardToDeck(card: card)
+        }
     }
     
     @IBAction func saveButt(_ sender: Any) {

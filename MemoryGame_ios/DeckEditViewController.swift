@@ -34,6 +34,8 @@ class DeckEditViewController: UIViewController,  UICollectionViewDelegateFlowLay
         btnAddImage.setBackgroundImage(BImage, for: UIControlState.normal)
         btnResetDeck.setBackgroundImage(BImage, for: UIControlState.normal)
         btnSaveDeck.setBackgroundImage(BImage, for: UIControlState.normal)
+        self.navigationController?.isNavigationBarHidden = true;
+        self.navigationController?.isNavigationBarHidden = false;
         
     }
     
